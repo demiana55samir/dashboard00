@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "dashboard",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+    }
+  ]
+}

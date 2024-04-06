@@ -1,0 +1,96 @@
+<div
+  class="container-fluid align-items-center d-flex justify-content-center ml-5 pl-5"
+>
+  <form
+    (ngSubmit)="updateProduct()"
+    #editForm="ngForm"
+    *ngIf="product"
+    class="align-items-center justify-content-center"
+  >
+    <h2
+      class="text-danger text-center mb-5 d-flex justify-content-center ml-5 pl-5"
+    >
+      Edit Product
+    </h2>
+    <div class="form-group">
+      <label for="name" class="mb-2"> Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="product.ar.title"
+        required
+      />
+    </div>
+    <div>
+      <label for="id" class="mb-2"> Id:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        name="id"
+        [(ngModel)]="product.id"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="price" class="mb-2">Price:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="price"
+        name="price"
+        [(ngModel)]="product.price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="quantity" class="mb-2">Quantity:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="quantity"
+        name="quantity"
+        [(ngModel)]="product.quantityInStock"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="catId" class="mb-2">Catigory Id:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="catId"
+        name="catId"
+        [(ngModel)]="product.categoryId"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="catName" class="mb-2">Catigory Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="catName"
+        name="catName"
+        [(ngModel)]="product.sku"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="imageUrl" class="mb-2">Image Url:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="imageUrl"
+        name="imageUrl"
+        [(ngModel)]="product.images"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary m-5">Update Product</button>
+  </form>
+</div>

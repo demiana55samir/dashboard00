@@ -1,0 +1,26 @@
+.container{
+    margin :20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-admin{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-admin input{
+    width: 200px;
+    padding: 5px;
+}
+
+.add-admin select{
+    width: 200px;
+    padding: 5px;
+}
+
+.container button{
+    width: 200px;
+    border: none;
+}

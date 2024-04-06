@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iti-final-project0": {
+      "hosting": {
+        "dashboard": [
+          "iti-final-project0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iti-final-project0"
+  }
+}
