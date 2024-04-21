@@ -1,0 +1,53 @@
+<div
+  class="container-fluid align-items-center d-flex justify-content-center ml-5 pl-5"
+>
+  <form
+    (ngSubmit)="updateOrder()"
+    #editForm="ngForm"
+    *ngIf="orddObj"
+    class="align-items-center justify-content-center"
+  >
+    <h2
+      class="text-danger text-center mb-5 d-flex justify-content-center ml-5 pl-5"
+    >
+      Edit Order
+    </h2>
+
+    <div>
+      <label for="confirmed" class="mb-2"> Confirmed Status</label>
+      <input
+        type="text"
+        class="form-control"
+        id="confirmed"
+        name="confirmed"
+        [(ngModel)]="orddObj.confirmed"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="status" class="mb-2">Item Status</label>
+      <input
+        type="text"
+        class="form-control"
+        id="status"
+        name="status"
+        [(ngModel)]="orddObj.status"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="timestamp" class="mb-2">timestamp:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="timestamp"
+        name="timestamp"
+        [(ngModel)]="orddObj.timestamp"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary m-5">Update Order</button>
+  </form>
+</div>
+

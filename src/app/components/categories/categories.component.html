@@ -1,0 +1,64 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="text-danger text-center mb-4">categories List</h5>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">description</th>                
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cat of cats ">
+                <td><img [src]="cat.url" style="height: 50px; width: 50px;"></td>
+                <td>{{ cat.name }}</td>
+                <td>{{ cat.description }}</td>
+                <td>
+                  <button class="btn btn-outline-danger mr-2" (click)="deleteCat(cat.catId)">
+                    <i class="bi bi-trash"></i> 
+                  </button>     
+                </td>
+                <td>
+              
+                  <button class="btn btn-outline-success" (click)="updateCat(cat.catId , cat)">
+                    <i class="bi bi-pencil"></i> 
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-12 mt-5">
+        <div class="card border-0 shadow p-3">
+          <h5 class="text-warning text-center mb-3">Add Category</h5>
+          <div class="form-group">
+            <label for="name"> Name :</label>
+            <input type="text" class="form-control" id="name" name="name"
+             [(ngModel)]="catsObj.name"
+              placeholder="cat Name" required>
+          </div>
+          <div class="form-group">
+            <label for="description"> Description :</label>
+            <input type="text" class="form-control" id="description" name="description"
+             [(ngModel)]="catsObj.description"
+              placeholder="description" required>
+          </div>
+          <div class="form-group">
+            <label for="url"> URL :</label>
+            <input type="text" class="form-control" id="url" name="url"
+             [(ngModel)]="catsObj.url"
+              placeholder="url" required>
+          </div>
+         
+          <button type="button" class="btn btn-outline-success btn-block"
+           (click)="addCat()">Add Cat</button>
+        </div>
+      </div>
+    </div>
+  </div>

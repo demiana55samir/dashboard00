@@ -16,7 +16,15 @@ export interface Iproduct {
   proId:string;
   price:number;
   quantityInStock:string;
-  rating:number;
+  rating: {
+    [key: string]: {
+      ReviewTitle: string;
+      ReviewTitleDetail: string;
+      date: string;
+      name: string;
+      rate: string;
+    };
+  };
   ratingQuantity:number;
   sku:string;
   subCategoryId:string;

@@ -1,13 +1,164 @@
-<div class="container-fluid">
-    <div class="charts">
-        <div class="pie" [chart]="pieChart">
-    
-        </div>
-        <div class="line" [chart]="lineChart">
-        </div>
-       
+<div class="container-fluid mt-3">
+  <div class="row gap-3 mb-3 justify-content-between">
+    <div
+      class="rounded-sm p-2"
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(107, 214, 252),
+          rgba(48, 95, 236)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Orders</span>
+      <div class="d-flex space" style="justify-content: space-between">
+        <img
+          src="..//src/assets/orders.png"
+          class="bg-opacity-10"
+          width="80px"
+          alt="orders"
+        />
+        <span class="" style="font-weight: 400; font-size: 50px">4,500</span>
+      </div>
     </div>
-    <!-- <div>
-        <app-addproduct></app-addproduct>
-    </div> -->
-</div>
+    <div
+      class="rounded-sm p-2"
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(239, 94, 122),
+          rgba(211, 83, 133)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Visitors</span>
+      <div class="d-flex space" style="justify-content: space-between">
+        <img src="..//src/assets/products.png" width="86.77px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">15,750</span>
+      </div>
+    </div>
+    <div
+      class="rounded-sm p-2"
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(214, 35, 254),
+          rgba(165, 48, 242)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Products</span>
+      <div class="d-flex space" style="justify-content: space-between">
+        <img src="..//src/assets/orders.png" width="86.77px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">9,500</span>
+      </div>
+    </div>
+    <div
+      class="rounded-sm p-2"
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(107, 214, 252),
+          rgba(48, 95, 236)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Revenue</span>
+      <div class="d-flex space" style="justify-content: space-between">
+        <img src="..//src/assets/money.png" width="80px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">8,500</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-12 p-2 rounded-sm">
+        <div class="line bg-white" [chart]="lineChart"></div>
+      </div>
+
+          <div class="container-fluid mt-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="text-danger text-center mb-4">Top Products</h5>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let product of products | slice:0:5">
+                        <td><img [src]="product.images" style="width: 50px; width: 50px;"></td>
+                        <td>{{ product.en.title }}</td>
+                        <td>{{ product.quantityInStock }}</td>
+                        <td>{{ product.price }} EGP</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 p-2 bg-white rounded-sm">
+        <div class="bg-white p-2">
+          <h3>Orders Status</h3>
+          <div class="p-2 container">
+            <div class="pie" [chart]="pieChart1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8  ">
+        <div class="p-2 bg-white">
+          <div class="d-flex justify-content-between p-2 align-items-center">
+            <div class="container-fluid mt-5">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5 class="text-danger text-center mb-4">Last Orders</h5>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Confirmed</th>
+                    <th scope="col"> paymentMethod</th>
+                    <th scope="col">status</th>
+                    <th scope="col">timestamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of ord">
+                    <td>{{order.confirmed}}</td>
+                    <td>{{order.paymentMethod }}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.timestamp}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { DataService } from '../../services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IAdmins } from '../../models/iAdmins';
+import { AdminsService } from '../../services/admins.service';
 
 @Component({
   selector: 'app-add-admin',
@@ -14,62 +14,49 @@ import { IAdmins } from '../../models/iAdmins';
 })
 export class AddAdminComponent {
 
-  admins: IAdmins[] =[];
-
-  adminObj : IAdmins ={
+  admin: IAdmins = {
     name :'',
-    id: "",
-    description:'',
+    adminId : "",
+    prev:'',
+    lastName:'',
   };
 
-  name :string ='';
-  id: string ="";
-  description:string='';
+  params: any;
+  adminId: string = '';
 
-
-
-  constructor(private router : Router ,private data :DataService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private data: AdminsService
+  ) {}
 
   ngOnInit(): void {
-    // this.getAllAdmins()
+    this.params = this.route.snapshot.params;
+    this.adminId = this.params.id;
+    this.getAdmin(this.params.id);
   }
 
-  // getAllAdmins(){
-  //   this.data.getAllAdmins.subscribe(data => {
-  //     this.admins = data.map((e: any) => {
-  //       const data = e.payload.doc.data();
-  //       data.id = e.payload.doc.id;
-  //       return data;
-  //     })
-  //   }, err => {
-  //     alert('Error while fetching student data');
-  //   })
-  // }
-
-  resetForm(){
-    this.id ='';
-    this.name ='';
-    this.description='';
-  }
-  addProduct(){
-    this.adminObj.id ='';
-    this.adminObj.name =this.name;
-    this.adminObj.description = this.description;
-
-
-    this.data.addAdmin(this.adminObj);
-
-    this.resetForm();
-
+  getAdmin(adminId: string): void {
+    this.data.getAdmin(adminId).subscribe(
+      (admin) => {
+        this.admin = admin as IAdmins;
+      },
+      (error) => {
+        console.error('Error fetching admin:', error);
+      }
+    );
   }
 
-  editProduct(){}
-
-  deleteProduct(admin:IAdmins){
-    if(window.confirm("Are you sure you want to delete this admin?")){
-      this.data.deleteAdmin(admin);
-    }
+  updateAdmin(): void {
+    this.data
+      .updateAdmin(this.adminId as string, this.admin)
+      .then(() => {
+        console.log('admin updated successfully');
+        this.router.navigate(['/admins']);
+      })
+      .catch((error) => {
+        console.error('Error updating admin:', error);
+      });
   }
 
 }

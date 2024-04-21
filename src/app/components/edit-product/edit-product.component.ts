@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Iproduct } from '../../models/iproducts';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-edit-product',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrl: './edit-product.component.css',
 })
 export class EditProductComponent implements OnInit {
+  
   product: Iproduct = {
     id: '',
     ar: {
@@ -32,7 +34,15 @@ export class EditProductComponent implements OnInit {
     proId: '',
     price: 0,
     quantityInStock: '',
-    rating: 0,
+    rating: {
+      '': { 
+        ReviewTitle: '',
+        ReviewTitleDetail: '',
+        date: '',
+        name: '',
+        rate: '',
+      },
+    },
     ratingQuantity: 0,
     sku: '',
     subCategoryId: '',
@@ -50,12 +60,11 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.params = this.route.snapshot.params;
-    this.productId = this.params.id;
-    this.getProduct(this.params.id);
+    this.getProduct(this.params.proId);
   }
 
-  getProduct(productId: string): void {
-    this.data.getProduct(productId).subscribe(
+  getProduct(proId: string): void {
+    this.data.getProduct(proId).subscribe(
       (product) => {
         this.product = product as Iproduct;
       },

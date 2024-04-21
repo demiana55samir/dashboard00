@@ -1,40 +1,92 @@
-    <div class="p-3 text-white bg-dark " style="width: 280px; height:150vh; 
-    display: flex; flex-direction: column; justify-content: space-between;">
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item mb-5">
-                <a  routerLink="/home" class="nav-link " routerLinkActive="active" aria-current="page">
-                    <i class="bi bi-house-door" style="size: 20px;"></i> Home
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a routerLink="/addproduct" routerLinkActive="active" class="nav-link text-white">
-                    <i class="bi bi-database-add"></i> Add Product
-                </a>
-            </li>           
-            <li class="nav-item mb-2">
-                <a routerLink="/addadmin" routerLinkActive="active" class="nav-link text-white">
-                    <i class="bi bi-database-add"></i> Add Admin
-                </a>
-            </li>
-           
-        </ul>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item mb-2">
-                <a routerLink="/setting" routerLinkActive="active" class="nav-link text-white">
-                    <i class="bi bi-gear"></i> Setting
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a routerLink="/login" routerLinkActive="active" class="nav-link text-white">
-                    <i class="bi bi-box-arrow-in-right"></i> Login
-                </a>
-            </li>
-            
-            <li class="nav-item">
-                <a routerLink="/logout" routerLinkActive="active" class="nav-link text-white">
-                    <i class="bi bi-box-arrow-right"></i> LogOut
-                </a>
-            </li>
-        </ul>
-    </div>
-    
+<div
+  class="p-3 sideBar-class"
+  style="width: 200px; height: 150vh; display: flex; flex-direction: column"
+>
+  <div class="p-2 text-center mb-5" style="box-sizing: border-box">
+    <img src="..//src/assets/jumia.png" width="100%" alt="" />
+  </div>
+
+  <ul class="nav nav-pills text-black flex-column">
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/home"
+        class="nav-link  sidebar_item_link"
+        routerLinkActive="active"
+        aria-current="page"
+      >
+        <i class="bi bi-house-door" style="size: 20px"></i> Dashboard
+      </a>
+    </li>
+
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/addproduct"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link"
+      >
+        <i class="bi bi-basket"></i> Products
+      </a>
+    </li>
+
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/categories"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link"
+      >
+        <i class="bi bi-person-circle"></i> Categories
+      </a>
+    </li>
+
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/orders"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link"
+      >
+        <i class="bi bi bi-receipt"></i> Orders
+      </a>
+    </li>
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/users"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link"
+      >
+        <i class="bi bi-database-add"></i> Users
+      </a>
+    </li>
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/admins"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link "
+      >
+        <i class="bi bi-database-add"></i> Add Admin
+      </a>
+    </li>
+  </ul>
+
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item sidebar_items mb-2">
+      <a
+        routerLink="/login"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link"
+      >
+        <i class="bi bi-box-arrow-in-right"></i> Login
+      </a>
+    </li>
+
+    <li class="nav-item sidebar_items  ">
+      <a
+      (click)="signOut()"
+        routerLink="/logout"
+        routerLinkActive="active"
+        class="nav-link sidebar_item_link"
+      >
+        <i class="bi bi-box-arrow-right"></i> LogOut
+      </a>
+    </li>
+  </ul>
+</div>

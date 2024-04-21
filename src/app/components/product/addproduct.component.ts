@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddproductComponent {
   products: Iproduct[] = [];
-
+  Object = Object;
   productObj: Iproduct = {
     id: '',
     ar: {
@@ -33,20 +33,22 @@ export class AddproductComponent {
     proId: '',
     price: 0,
     quantityInStock: '',
-    rating: 0,
+    rating: {
+      '': { 
+        ReviewTitle: '',
+        ReviewTitleDetail: '',
+        date: '',
+        name: '',
+        rate: '',
+      },
+    },
     ratingQuantity: 0,
     sku: '',
     subCategoryId: '',
     thumbnail: '',
   };
-
-  name: string = '';
-  id: string = '';
-  price: string = '';
-  quantity: string = '';
-  imageUrl: string = '';
-  catName: string = '';
-  catId: string = '';
+  
+  keys: string[] =[];
 
   constructor(private router: Router, private data: DataService) {
     this.getAllProducts();
@@ -86,7 +88,15 @@ export class AddproductComponent {
       proId: '',
       price: 0,
       quantityInStock: '',
-      rating: 0,
+      rating: {
+        '': { 
+          ReviewTitle: '',
+          ReviewTitleDetail: '',
+          date: '',
+          name: '',
+          rate: '',
+        },
+      },
       ratingQuantity: 0,
       sku: '',
       subCategoryId: '',
@@ -105,10 +115,10 @@ export class AddproductComponent {
     this.router.navigate(['/edit-product', id, product]);
   }
 
-  deleteProduct(productId: string): void {
+  deleteProduct(proId: string): void {
     if (confirm('Are you sure you want to delete this product?')) {
       this.data
-        .deleteProduct(productId)
+        .deleteProduct(proId)
         .then(() => {
           console.log('product deleted successfully');
           this.getAllProducts();

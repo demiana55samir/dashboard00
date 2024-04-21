@@ -1,16 +1,51 @@
-<div class="container">
-    <div class="d-flex flex-column gap-3">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Add Admin </h5>
-              <h2 class="fw-bold text-success">Admin Name</h2>
-              <h6 class="card-subtitle mb-2 text-muted">Admin Id</h6>
-              <p class="card-text">Description : Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <div class="d-flex gap-2">
-                <button class="btn btn-sm btn-success" > Edit </button>
-                <button class="btn btn-sm btn-danger"> Remove </button>
-              </div>
-            </div>
-          </div>
+<div
+  class="container-fluid align-items-center d-flex justify-content-center ml-5 pl-5"
+>
+  <form
+    (ngSubmit)="updateAdmin()"
+    #editForm="ngForm"
+    *ngIf="admin"
+    class="align-items-center justify-content-center"
+  >
+    <h2
+      class="text-danger text-center mb-5 d-flex justify-content-center ml-5 pl-5"
+    >
+      Edit Admin
+    </h2>
+    <div class="form-group">
+      <label for="name" class="mb-2"> Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="admin.name"
+        required
+      />
     </div>
+    <div>
+      <label for="lastName" class="mb-2"> lastName:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="admin.lastName"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="prev" class="mb-2">prev:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="prev"
+        name="prev"
+        [(ngModel)]="admin.prev"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary m-5">update Admin</button>
+  </form>
 </div>

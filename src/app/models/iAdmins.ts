@@ -1,5 +1,6 @@
 export interface IAdmins {
-    id:string;
+    adminId:string;
     name:string;
-    description:string;
+    prev:string;
+    lastName:string;
 }

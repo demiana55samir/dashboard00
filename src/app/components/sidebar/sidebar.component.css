@@ -1,0 +1,17 @@
+.sideBar-class{
+
+    background-color: #FFFFFF;
+    color: #CDCDCD;
+    
+}
+.sidebar_item_link{
+    color: #CDCDCD;
+}
+.sidebar_items :hover{
+    background-color: #FFC42A;
+    color: #FFFFFF;
+}
+
+.sidebar_items .active{
+    background-color: #FFC42A;
+}

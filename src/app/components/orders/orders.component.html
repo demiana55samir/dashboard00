@@ -1,0 +1,65 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="text-danger text-center mb-4">Orders List</h5>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Confirmed</th>
+                <th scope="col"> paymentMethod</th>
+                <th scope="col">status</th>
+                <th scope="col">timestamp</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of ord">
+                <td>{{order.confirmed}}</td>
+                <td>{{order.paymentMethod }}</td>
+                <td>{{order.status}}</td>
+                <td>{{order.timestamp}}</td>
+                <td>
+                  <button class="btn btn-outline-danger mr-2"
+                   (click)="deleteOrder(order.orderDetailsid ,  order.orderId)">
+                   <i class="bi bi-trash"></i> 
+                  </button>
+                  </td>
+                  <td>
+                  <button class="btn btn-outline-success"
+                   (click)="updateOrder(order)">
+                   <i class="bi bi-pencil"></i> 
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <div class="col-md-12 mt-5">
+        <div class="card border-0 shadow p-3">
+          <h5 class="text-warning text-center mb-3">Add Orders</h5>
+          <div class="form-group">
+            <input type='boolean' class="form-control" id="confirmed" name="confirmed"
+             [(ngModel)]="orddObj.confirmed"
+              placeholder="confirmed" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="paymentMethod" name="paymentMethod" 
+            [(ngModel)]="orddObj.paymentMethod"
+              placeholder="paymentMethod " required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="status" name="status"
+              [(ngModel)]="orddObj.status" placeholder="status" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="timestamp" name="timestamp"
+              [(ngModel)]="orddObj.timestamp" placeholder="timestamp" required>
+          </div>
+          <button type="button" class="btn btn-outline-success btn-block" (click)="addOrder()">Add Orders</button>
+        </div> -->
+      <!-- </div> -->
+    </div>
+  </div>

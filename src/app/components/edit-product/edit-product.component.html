@@ -13,27 +13,18 @@
       Edit Product
     </h2>
     <div class="form-group">
-      <label for="name" class="mb-2"> Name:</label>
+      <img [src]="product.images" style="width: 100px; height: 100px; display: inline-flexbox; justify-content: center;"><br/>
+      <label for="brand" class="mb-2"> Name:</label>  
       <input
         type="text"
         class="form-control"
-        id="name"
-        name="name"
-        [(ngModel)]="product.ar.title"
+        id="brand"
+        name="brand"
+        [(ngModel)]="product.en.brand" 
         required
       />
     </div>
-    <div>
-      <label for="id" class="mb-2"> Id:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="id"
-        name="id"
-        [(ngModel)]="product.id"
-        required
-      />
-    </div>
+  
     <div class="form-group">
       <label for="price" class="mb-2">Price:</label>
       <input
@@ -56,18 +47,6 @@
         required
       />
     </div>
-
-    <div class="form-group">
-      <label for="catId" class="mb-2">Catigory Id:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="catId"
-        name="catId"
-        [(ngModel)]="product.categoryId"
-        required
-      />
-    </div>
     <div class="form-group">
       <label for="catName" class="mb-2">Catigory Name:</label>
       <input
@@ -87,6 +66,62 @@
         id="imageUrl"
         name="imageUrl"
         [(ngModel)]="product.images"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ReviewTitle" class="mb-2">rating: ReviewTitle</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ReviewTitle"
+        name="ReviewTitle"
+        [(ngModel)]="product.rating['0'].ReviewTitle"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="ReviewTitleDetail" class="mb-2">rating: ReviewTitleDetail</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ReviewTitleDetail"
+        name="ReviewTitleDetail"
+        [(ngModel)]="product.rating['0'].ReviewTitleDetail"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="date" class="mb-2">rating: date</label>
+      <input
+        type="text"
+        class="form-control"
+        id="date"
+        name="date"
+        [(ngModel)]="product.rating['0'].date"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="name" class="mb-2">rating: name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="product.rating['0'].name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="rate" class="mb-2">rating: name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="rate"
+        name="rate"
+        [(ngModel)]="product.rating['0'].rate"
         required
       />
     </div>

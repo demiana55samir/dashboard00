@@ -1,0 +1,53 @@
+<div
+  class="container-fluid align-items-center d-flex justify-content-center ml-5 pl-5"
+>
+  <form
+    (ngSubmit)="updateCat()"
+    #editForm="ngForm"
+    *ngIf="category"
+    class="align-items-center justify-content-center"
+  >
+    <h2
+      class="text-danger text-center mb-5 d-flex justify-content-center ml-5 pl-5"
+    >
+      Edit Category
+    </h2>
+    <div class="form-group">
+      <img [src]="category.url" style="width: 100px; height: 100px; display: inline-flexbox; justify-content: center;"><br/>
+      <label for="name" class="mb-2"> Name:</label>  
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="category.name" 
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="description" class="mb-2"> Description:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        [(ngModel)]="category.description"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="url" class="mb-2">Quantity:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="url"
+        name="url"
+        [(ngModel)]="category.url"
+        required
+      />
+    </div>
+   
+    <button type="submit" class="btn btn-primary m-5">Update Category</button>
+  </form>
+</div>

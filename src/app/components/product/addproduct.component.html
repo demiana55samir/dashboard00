@@ -1,0 +1,84 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="text-danger text-center mb-4">Product List</h5>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Reviews</th>
+              
+              <th scope="col">Delete</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- | slice:0:7 -->
+            <tr *ngFor="let product of products | slice:0:7 ">
+              <td><img style="width: 50px;height: 50px;" [src]="product.images"></td>
+              <td>{{ product.en.title }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.quantityInStock }}</td>
+              <td>
+              @if (product.rating != null) {
+                  
+                    ReviewTitleDetail: {{ product.rating['0'].ReviewTitleDetail }} <br/>
+                    name : {{ product.rating['0'].name }} <br/>
+                    rate :{{ product.rating['0'].rate }} <br/>              
+                  
+              }@else {
+                <td></td>
+              }
+            </td>
+              <td>
+                <button class="btn btn-outline-danger mr-2" (click)="deleteProduct(product.proId)">
+                  <i class="bi bi-trash"></i> 
+                </button>
+               
+              </td>
+              <td>
+            
+                <button class="btn btn-outline-success" (click)="updateProduct(product.proId , product)">
+                  <i class="bi bi-pencil"></i> 
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-12 mt-5">
+      <div class="card border-0 shadow p-3">
+        <h5 class="text-warning text-center mb-3">Add Product</h5>
+        <div class="form-group">
+          <label for="name"> Name :</label>
+          <input type="text" class="form-control" id="name" name="name"
+           [(ngModel)]="productObj.ar.title"
+            placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <label for="price"> Price :</label>
+          <input type="number" class="form-control" id="price" name="price"
+           [(ngModel)]="productObj.price"
+            placeholder="Price" required>
+        </div>
+        <div class="form-group">
+          <label for="brand"> ar : brand:</label>
+          <input type="text" class="form-control" id="brand" name="brand" 
+          [(ngModel)]="productObj.ar.brand"
+            placeholder="ar brand" required>
+        </div>
+        <div class="form-group">
+          <label for="quantityInStock">Quantity In Stock</label>
+          <input type="number" class="form-control" id="quantityInStock" name="quantityInStock"
+            [(ngModel)]="productObj.quantityInStock" placeholder="Quantity" required>
+        </div>
+        <button type="button" class="btn btn-outline-success btn-block" (click)="addProduct()">Add Product</button>
+      </div>
+    </div>
+  </div>
+</div>
