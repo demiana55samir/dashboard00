@@ -70,13 +70,14 @@ export class AuthServiceService {
             this.router.navigateByUrl('/home');
             JSON.parse(localStorage.getItem('user')!);
 
-          } else{
-            alert("you are not one of the Admins")
+          } else {
+        alert("you are not one of the admins");
+
           }
         });
       })
-      .catch((error) => {
-        alert(error);
+      .catch(() => {
+        alert("you are not one of the admins");
       });
   }
 

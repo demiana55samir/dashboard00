@@ -21,6 +21,8 @@ export class AddUsersComponent {
     emailVerified:false,
     phoneNumber:'',
     userID:'',
+    showButton:false,
+    isAdmin:false,
   };
 
   params: any;
