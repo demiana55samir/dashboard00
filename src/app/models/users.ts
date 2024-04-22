@@ -4,5 +4,7 @@ export interface IUsers {
     emailVerified:boolean;
     phoneNumber:string;
     userID:string;
+    showButton: boolean;
+    isAdmin:boolean;
     
 }

@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit{
     public authService : AuthServiceService,
   ){}
 
-  async ngOnInit() {
-   this.form = await this.fb.group({
+   ngOnInit() {
+   this.form =  this.fb.group({
     
       email:['',Validators.required,Validators.email],
       password:['',Validators.required, ],
@@ -59,17 +59,18 @@ export class LoginComponent implements OnInit{
     }
     
    await this.authService.SignIn(rowForm.email,rowForm.password)
-    const currentuser = await firstValueFrom(this.authService.user$ )
-    console.log(currentuser);
-    if(currentuser){
-       const isadmin= await this.authService.isAdmin(currentuser.uid)
-        if(isadmin){
-          this.router.navigateByUrl('/home')
-        }
-        else{
-          alert("you are not one of admins")
-        }
-    }
+
+    // const currentuser = await (this.authService.userData )
+    // console.log(currentuser);
+    // if(currentuser){
+    //    const isadmin= await this.authService.isAdmin(currentuser)
+    //     if(isadmin){
+    //       this.router.navigateByUrl('/home')
+    //     }
+    //     else{
+    //       alert("you are not one of admins")
+    //     }
+    // }
     this.reset()
     
   }

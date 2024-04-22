@@ -3,46 +3,43 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { firstValueFrom, from, Observable } from 'rxjs';
-
-
-interface User{
-  uid: string;
-  email: string;
-}
-
+import { IUsers } from '../models/users';
+import { user } from '@angular/fire/auth';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class AuthServiceService {
   userData: any;
-  user$ :Observable<User | any>
+
+  userObj: IUsers = {
+    displayName: '',
+    email: '',
+    emailVerified: false,
+    phoneNumber: '',
+    userID: '',
+    showButton: false,
+    isAdmin: false,
+  };
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone
   ) {
-     
-    this.user$= this.afAuth.authState
-    console.log(this.afAuth.authState);
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-        console.log( this.userData);
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        router.navigateByUrl('/home')
-        JSON.parse(localStorage.getItem('user')!);
-      }
-    });
-  } 
-
-  ngOninit():void {
-    console.log(this.afAuth.authState);
-
+    // this.afAuth.authState.subscribe((user) => {
+    //   this.userData = user;
+    //   if (user) {
+    //     console.log(this.userData);
+    //     localStorage.setItem('user', JSON.stringify(this.userData));
+    //     router.navigateByUrl('/home');
+    //     JSON.parse(localStorage.getItem('user')!);
+    //   }
+    // });
+    // console.log(this.userData);
   }
+
+  ngOninit(): void {}
 
   SignUp(email: string, password: string) {
     return this.afAuth
@@ -57,31 +54,38 @@ export class AuthServiceService {
       });
   }
 
-  SignIn(email: string, password: string): Observable<void> {
+  async SignIn(email: string, password: string): Promise<void> {
     const promis = this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         // this.SetUserData(result.user);
 
         console.log(arguments);
-        this.afAuth.authState.subscribe((user) => {
+        this.afAuth.authState.subscribe(async (user) => {
           console.log(user);
-          if (user) {
+          const userAD = await this.isAdmin(user?.uid || '');
+          if (userAD) {
+            localStorage.setItem('user', JSON.stringify(user));
+
             this.router.navigateByUrl('/home');
+            JSON.parse(localStorage.getItem('user')!);
+
+          } else{
+            alert("you are not one of the Admins")
           }
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        alert(error);
       });
-    return from(promis);
   }
 
- async isAdmin(uid:string): Promise<boolean>{
-   const adminDoc =  await firstValueFrom(this.afs.collection('admins').doc(uid).get())
-    return adminDoc.exists
+  async isAdmin(userId: string): Promise<boolean> {
+    const adminDoc = await firstValueFrom(
+      this.afs.collection('admins').doc(userId).get()
+    );
+    return adminDoc.exists;
   }
-
 
   // login() {
   //   this.afAuth
@@ -97,8 +101,6 @@ export class AuthServiceService {
   //       alert(error);
   //     });
   // }
-
-
 
   // SetUserData(user: any) {
   //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(
@@ -130,4 +132,3 @@ export class AuthServiceService {
     return user !== null;
   }
 }
-

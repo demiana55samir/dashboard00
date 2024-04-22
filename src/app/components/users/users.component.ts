@@ -22,6 +22,8 @@ export class UsersComponent {
     emailVerified:false,
     phoneNumber:'',
     userID:'',
+    showButton: false,
+    isAdmin:false,
   };
 
 
@@ -51,8 +53,29 @@ export class UsersComponent {
       emailVerified:false,
       phoneNumber:'',
       userID:'',
+      showButton:false,
+      isAdmin:false,
     };
   }
+  showButton(user: IUsers){
+    user.showButton= true;
+  }
+  hideButton(user: IUsers){
+    user.showButton= false
+  }
+checkAdmin(user: IUsers){
+  this.data.addDocument(user)
+  this.showButton
+  this.userObj.isAdmin= true
+  this.data.addAdminField(user)
+  console.log("from check admin");
+  // if(user.showButton){
+  //   user.isAdmin= true
+
+  // } else{
+
+  // }
+}
   addUser() {
     this.data.addUser(this.userObj);
     this.resetForm();
